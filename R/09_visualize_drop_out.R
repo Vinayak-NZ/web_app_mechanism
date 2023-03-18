@@ -23,17 +23,21 @@ data_subset_key_vars <- data_subset[,
                                       "OE_t1", 
                                       "INT_t1",
                                       "CSE_t1", 
-                                      "PL_t1")]
+                                      "PL_t1", 
+                                      "app_entry")]
 
 setDT(data_subset_key_vars)
 
 data_subset_long_drop_out <- melt(data_subset_key_vars, 
-                                     id.vars = c("id", "early_drop_out"), 
+                                     id.vars = c("id", "early_drop_out", "app_entry"), 
                                      variable.name = "HAPA_construct",
                                      value.name = "value")
 
 data_subset_long_drop_out$early_drop_out <- 
   as.factor(data_subset_long_drop_out$early_drop_out)
+
+data_subset_long_drop_out$app_entry <- 
+  as.factor(data_subset_long_drop_out$app_entry)
 
 ggplot(data = data_subset_long_drop_out, 
        aes(x = HAPA_construct, 

@@ -2,11 +2,17 @@
 
 data_subset_key_vars <- data_subset[, 
                                     c("id", 
+                                      "randomisation_modified",
+                                      "app_entry", 
+                                      "recruitment_strategy",
                                       "early_drop_out",
                                       "OE_t1", 
                                       "INT_t1",
                                       "CSE_t1", 
-                                      "PL_t1")]
+                                      "PL_t1", 
+                                      "age", 
+                                      "education", 
+                                      "fam_composition")]
 
 data_subset_key_vars <- data_subset_key_vars[complete.cases(data_subset_key_vars),]
 
@@ -16,8 +22,14 @@ data_subset_key_vars$early_drop_out <- factor(data_subset_key_vars$early_drop_ou
                                            levels = c(0,1), 
                                            labels = c("No early drop out", "Early drop out"))
 
+data_subset_key_vars$randomisation_modified <- as.factor(data_subset_key_vars$randomisation_modified)
+
+data_subset_key_vars$app_entry <- as.factor(data_subset_key_vars$app_entry)
+
+data_subset_key_vars$recruitment_strategy <- as.factor(data_subset_key_vars$recruitment_strategy)
+
 # model-early-drop-out
-model_1_drop_out_early <- glm(early_drop_out ~ OE_t1 + INT_t1 + CSE_t1 + PL_t1,
+model_1_drop_out_early <- glm(early_drop_out ~ OE_t1 + INT_t1 + CSE_t1 + PL_t1 + app_entry + age + education + fam_composition,
                         family = binomial(link='logit'),
               data = data_subset_key_vars)
 
