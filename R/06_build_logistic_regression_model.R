@@ -43,6 +43,10 @@ sink("output/model_1_drop_out_early_confint.txt")
 print(confint(model_1_drop_out_early))
 sink()
 
+sink("output/model_1_drop_out_early_var_explained.txt")
+NagelkerkeR2(model_1_drop_out_early)
+sink()
+
 # model-late-drop-out
 data_subset_key_vars <- data_subset[, 
                                     c("id", 
@@ -69,4 +73,5 @@ summary(model_1_drop_out_late)
 sink("output/model_1_drop_out_late.txt")
 print(summary(model_1_drop_out_late))
 sink()
+
 

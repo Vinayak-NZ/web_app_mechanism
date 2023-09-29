@@ -4,6 +4,24 @@ data_subset$app_progression <- ifelse(!is.na(data_subset$COMM_t4), 4,
                                       ifelse(!is.na(data_subset$COMM_t3), 3, 
                                              ifelse(!is.na(data_subset$COMM_t2), 2, 1)))
 
+data_subset$module_three <- ifelse(!is.na(data_subset$COMM_t4) | 
+                                   !is.na(data_subset$OE_t4) | 
+                                   !is.na(data_subset$CSE_t4) | 
+                                   !is.na(data_subset$INT_t4) | 
+                                   !is.na(data_subset$PL_t4), 1, 0)
+
+data_subset$module_two <- ifelse(!is.na(data_subset$COMM_t3) | 
+                                   !is.na(data_subset$OE_t3) | 
+                                   !is.na(data_subset$CSE_t3) | 
+                                   !is.na(data_subset$INT_t3) | 
+                                   !is.na(data_subset$PL_t3), 1, 0)
+
+data_subset$module_one <- ifelse(!is.na(data_subset$COMM_t2) | 
+                                   !is.na(data_subset$OE_t2) | 
+                                   !is.na(data_subset$CSE_t2) | 
+                                   !is.na(data_subset$INT_t2) | 
+                                   !is.na(data_subset$PL_t2), 1, 0)
+
 data_subset$early_drop_out <- ifelse(!is.na(data_subset$COMM_t4), 0, 
                                       ifelse(!is.na(data_subset$COMM_t3), 0, 1))
 

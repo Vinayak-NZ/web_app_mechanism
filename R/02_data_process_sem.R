@@ -65,7 +65,8 @@ data_subset <- data_input_comp[, c("id",
                               "C_m_t4", 
                               "L10Nuterfreundlichkeit_t1_a1", 
                               "L10Nutzen_t1_a1", 
-                              "L9Zufrieden_t1_a1")]
+                              "L9Zufrieden_t1_a1", 
+                              "Code")]
 
 ## ----variable-edit
 
